@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/kamtohoditcz/first-fe/issues"
   },
-  "homepage": "https://kamtohodit.cz"
+  "homepage": "https://kamtohodit.cz",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
 }
