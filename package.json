@@ -18,5 +18,10 @@
   "homepage": "https://kamtohodit.cz",
   "dependencies": {
     "express": "^4.15.4"
+  },
+  "devDependencies": {
+    "blue-tape": "^1.0.0",
+    "bluebird": "^3.5.0",
+    "supertest": "^3.0.0"
   }
 }
