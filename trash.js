@@ -12,6 +12,8 @@ function sortByOccurence(trash) {
 module.exports = mytrash = {
   listAll: function (text) {
     const query = buildQuery(text);
-    return mongo.find(collectionName, { query: query }).then((arr) => _.sortBy(arr, [sortByOccurence, 'name']));
+    return mongo.find(collectionName, { query: query })
+      .then((arr) => _.map(arr, (a) => _.pick(a, ['name', 'description', 'imagePath'])))
+      .then((arr) => _.sortBy(arr, [sortByOccurence, 'name']));
   },
 }
