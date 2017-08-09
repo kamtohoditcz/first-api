@@ -1,9 +1,15 @@
 var express = require('express');
+var cors = require('cors')
 var path = require('path');
 var app = express();
 
+// Enable all cors for now
+app.use(cors());
+
+// Publish images
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Add the route
 var routes = require('./routes');
 app.use('/', routes);
 

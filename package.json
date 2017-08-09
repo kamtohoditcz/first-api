@@ -18,6 +18,7 @@
   },
   "homepage": "https://kamtohodit.cz",
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.15.4",
     "lodash": "^4.17.4",
     "mongodb": "^2.2.31"

@@ -9,6 +9,10 @@
 var sameCharsRegExps = ['aá', 'cč', 'dď', 'eéě', 'ií', 'nň', 'oó', 'rř', 'sš', 'tť', 'uúů', 'yý', 'zž'].map(chars => new RegExp(`[${chars}]`, 'ig'));
 
 module.exports = (text) => {
+  if (!text) {
+    return { status: 'PUBLIC' };
+  }
+
   text = text.trim();
   text = text.replace(/\s+/g, ' ');
   text = text.replace(' ', '.* ');
@@ -19,7 +23,10 @@ module.exports = (text) => {
   var re = { $regex: text, $options: 'gim' };
 
   return {
-    $or: [{ name: re }, { aliases: re }],
+    $and: [
+      { status: 'PUBLIC' },
+      { $or: [{ name: re }, { aliases: re }] }
+    ]
   }
 
 };
