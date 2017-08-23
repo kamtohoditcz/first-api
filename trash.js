@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const mongo = require('./mongo');
 const buildQuery = require('./search-query-builder');
+const moment = require('moment');
 
 const collectionName = 'trash';
 
@@ -30,6 +31,12 @@ module.exports = mytrash = {
 
       case 'pub':
         res = mongo.find(collectionName, {query: {status: 'PUBLIC'}});
+        break;
+
+      case 'lastweek':
+        // Cheeting a bit ;)
+        var d = moment().subtract(10, 'day').toDate();
+        res = mongo.find(collectionName, {query: {"last_edit_date": {$gte: d}}});
         break;
 
       case 'all':
