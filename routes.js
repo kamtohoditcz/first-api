@@ -10,4 +10,11 @@ router.get('/', function (req, res) {
   });
 });
 
+router.get('/stats', function (req, res) {
+  var q = req.query.q;
+  trash.stats(q).then(function (count) {
+    res.json(count);
+  });
+});
+
 module.exports = router;
